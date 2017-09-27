@@ -17,11 +17,11 @@ use App\Finding;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
-    Route::get('\findings', 'FindingController@getAll');
-    Route::get('\findings/{id}', 'FindingController@getId');
-    Route::get('\findings/{berry}', 'FindingController@getBerry');
-    Route::post('\findings', 'FindingController@add');
-    Route::delete('\findings/{id}', 'FindingController@delete');
+    Route::get('findings', 'FindingController@getAll');
+    Route::get('findings/{id}', 'FindingController@getId');
+    Route::get('findings/{berry}', 'FindingController@getBerry');
+    Route::post('findings', 'FindingController@add');
+    Route::delete('findings/{id}', 'FindingController@delete');
 
 
 
