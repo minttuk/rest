@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('\findings', 'FindingController@getAll');
+Route::get('\findings/{id}', 'FindingController@getId');
+Route::get('\findings/{berry}', 'FindingController@getBerry');
+Route::post('\findings', 'FindingController@add');
+Route::delete('\findings/{id}', 'FindingController@delete');
