@@ -20,6 +20,14 @@ class CreateFindingsTable extends Migration
             $table->float('long');
             $table->timestamps();
         });
+
+        DB::table('findings')->insert(
+            array(
+                'name' => 'Puolukoita',
+                'lat' => 60.249999,
+                'long' => 24.5999976
+            )
+        );
     }
 
     /**
