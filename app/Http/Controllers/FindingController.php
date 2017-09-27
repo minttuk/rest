@@ -10,7 +10,6 @@ class FindingController extends Controller
 {
     public function getAll(){
         return Finding::all();
-        //return "moi";
     }
 
     public function getId($id){
@@ -22,7 +21,12 @@ class FindingController extends Controller
     }
 
     public function add(Request $request){
-        return Article::create($request->all());
+        $finding = new Finding;
+        $finding->name = $request->name;
+        $finding->lat = $request->lat;
+        $finding->long = $request->long;
+        $finding->save();
+        //return Finding::create($request->all());
     }
 
     public function delete(Request $request, $id){
