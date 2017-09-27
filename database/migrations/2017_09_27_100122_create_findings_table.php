@@ -15,6 +15,9 @@ class CreateFindingsTable extends Migration
     {
         Schema::create('findings', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->float('lat');
+            $table->float('long');
             $table->timestamps();
         });
     }
