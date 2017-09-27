@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Finding;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
-    //Route::get('\events', 'MyApi@ebentList')
+    Route::get('\findings', 'FindingController@getAll');
+    Route::get('\findings/{id}', 'FindingController@getId');
+    Route::get('\findings/{berry}', 'FindingController@getBerry');
+    Route::post('\findings', 'FindingController@add');
+    Route::delete('\findings/{id}', 'FindingController@delete');
+
+
+
 });
