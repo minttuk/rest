@@ -9,7 +9,8 @@ use App\Finding;
 class FindingController extends Controller
 {
     public function getAll(){
-        return Response::json(Finding::all());
+        return Finding::all();
+        //return "moi";
     }
 
     public function getId($id){
