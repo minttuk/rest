@@ -53,5 +53,10 @@ function submit() {
     addFinding(berry, lat, lng);
   }
   else {
+    $("#submitresponse").html("Varmista, että olet valinnut marjan ja asettanut sijainnin.");
   }
+}
+
+function parseInput(input) {
+    return $($.parseHTML(input)).text();
 }
