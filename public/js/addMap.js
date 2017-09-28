@@ -29,3 +29,7 @@ function initMap() {
 function getMap() {
   return map;
 }
+
+function getMarker() {
+  return marker;
+}

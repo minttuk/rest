@@ -1,27 +1,47 @@
-var locatebutton = document.getElementById('locate-button');
+var locatebutton = $('#locate-button');
+var submitbutton = $('#submit-button');
+var lat;
+var lng;
+
+$( document ).ready(function() {
+  locatebutton = $('#locate-button');
+  submitbutton = $('#submit-button');
+});
 
 function locate() {
-  locatebutton.disabled = true;
-  locatebutton.innerHTML = "Paikantaa...";
-
-  function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    locatebutton.innerHTML = "GPS-paikannus";
-    locatebutton.disabled = false;
-    console.log('<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>');
-
-  }
+  locatebutton.prop('disabled', true);
+  submitbutton.prop('disabled', true);
+  locatebutton.html("Paikantaa...");
 
   geoFindMe(function(position) {
+    //success
+    // gps location showed on map
     var map = getMap();
-    locatebutton.innerHTML = "GPS-paikannus";
-    locatebutton.disabled = false;
-    var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
-    map.setCenter(uluru);
+    lat = position.coords.latitude;
+    lng = position.coords.longitude
+    var uluru = {lat: lat, lng: lng};
     placeMarker(uluru, map);
+    map.setCenter(uluru);
+    //enables gps location button again
+    locatebutton.innerHTML = "GPS-paikannus";
+    locatebutton.prop('disabled', false);
+    submitbutton.prop('disabled', false);
   },
   function() {
+    //error
     console.log("Unable to retrieve your location");
   });
+}
+
+function submit() {
+  var berry = $('#berryselect').val();
+  if (berry != '(valitse marja)' && berry != '' && marker != null) {
+    var lat = marker.getPosition().toJSON().lat;
+    var lng = marker.getPosition().toJSON().lng;
+    console.log(berry, lat, lng);
+    console.log('success');
+  }
+  else {
+    console.log('error');
+  }
 }
