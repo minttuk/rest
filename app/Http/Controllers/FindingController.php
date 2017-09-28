@@ -22,7 +22,7 @@ class FindingController extends Controller
 
     public function add(Request $request){
         $finding = new Finding;
-        $finding->name = $request->name;
+        $finding->berry_id = $request->berry_id;
         $finding->lat = $request->lat;
         $finding->long = $request->long;
         $finding->save();
