@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Marjapaikat</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Marjalöytö</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Etsi Marjapaikkoja <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="addFinding.html">Lisää Marjapaikka</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="form-group">
+                    <label for="berryselect">Etsi marjapaikka</label>
+                    <select class="form-control" id="berryselect">
+                        <option>(valitse marja)</option>
+                        <option>kaikki</option>
+                    </select>
+                </div>
+                <button id="find-button" type="button" class="btn btn-primary" onclick="find()">Etsi</button>
+
+                <!--<p>Paikanna sijaintisi tai valitse sijainti kartalta.</p>
+                <button id="locate-button" type="button" class="btn btn-secondary" onclick="locate()">GPS-paikannus</button>-->
+                <div class="row">
+                    <div class="col">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </form>
+            <!--<button id="submit-button" type="button" class="btn btn-primary" onclick="submit()">Lisää</button>-->
+        </div>
+    </div>
+</div>
+<script src="js/settings.js"></script>
+<script src="js/berry.js"></script>
+<script src="js/addFinding.js"></script>
+<script src="js/geolocation.js"></script>
+<script src="js/addMap.js"></script>
+<script src="js/getFindings.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF34dt_MsDkWzVsTV79qloaS8HHoSPrkQ&callback=initMap"></script>
+
+</body>
+</html>

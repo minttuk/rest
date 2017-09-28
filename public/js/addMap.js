@@ -14,6 +14,14 @@ function placeMarker(position, map) {
   map.setCenter(position);
 }
 
+function placeMultipleMarker(position, map) {
+    marker = new google.maps.Marker({
+      position: position,
+      map: map
+  });
+
+}
+
 function initMap() {
   var uluru = {lat: 60.1699, lng: 24.9384};
   map = new google.maps.Map(document.getElementById('map'), {
