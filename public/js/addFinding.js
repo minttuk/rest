@@ -50,10 +50,8 @@ function submit() {
   if (berry != '(valitse marja)' && berry != '' && marker != null) {
     var lat = marker.getPosition().toJSON().lat;
     var lng = marker.getPosition().toJSON().lng;
-    console.log(berry, lat, lng);
-    console.log('success');
+    addFinding(berry, lat, lng);
   }
   else {
-    console.log('error');
   }
 }

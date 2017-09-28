@@ -13,7 +13,12 @@ class BerryController extends Controller
     }
 
     public function getId($id){
+      if (is_int($id) || ctype_digit($id)) {
         return Berry::find($id);
+      }
+      else if (is_string($id)) {
+        return Berry::where('name', $id)->firstOrFail();
+      }
     }
 
     public function add(Request $request){

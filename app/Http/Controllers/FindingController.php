@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Finding;
-
+use App\Berry;
 
 class FindingController extends Controller
 {
@@ -22,11 +22,10 @@ class FindingController extends Controller
 
     public function add(Request $request){
         $finding = new Finding;
-        $finding->berry_id = $request->berry_id;
+        $finding->berry_id = Berry::where('name', $request->name)->firstOrFail()['id'];
         $finding->lat = $request->lat;
         $finding->long = $request->long;
         $finding->save();
-        //return Finding::create($request->all());
     }
 
     public function delete(Request $request, $id){
