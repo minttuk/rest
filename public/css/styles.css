@@ -7,3 +7,7 @@
  .container-fluid {
    margin: 20px 0px;
  }
+
+#submitresponsealert {
+  display: none;
+}

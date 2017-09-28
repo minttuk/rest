@@ -28,10 +28,10 @@
       <a class="navbar-brand" href="#">Marjalöytö</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">Etsi Marjapaikkoja <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="#">Lisää Marjapaikka</a>
           </li>
         </ul>
@@ -55,8 +55,14 @@
               </div>
             </div>
           </form>
-          <button id="submit-button" type="button" class="btn btn-primary" onclick="submit()">Lisää</button>
-          <p id="submitresponse"></p>
+          <div class="row">
+            <div class="col-sm-1">
+              <button id="submit-button" type="button" class="btn btn-primary" onclick="submit()">Lisää</button>
+            </div>
+            <div class="col-sm-11">
+                <p id="submitresponse"></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
