@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use App\Finding;
+use App\Berry;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,8 @@ Route::get('findings/{id}', 'FindingController@getId');
 Route::get('findings/{berry}', 'FindingController@getBerry');
 Route::post('findings', 'FindingController@add');
 Route::delete('findings/{id}', 'FindingController@delete');
+
+Route::get('berries', 'BerryController@getAll');
+Route::get('berries/{id}', 'BerryController@getId');
+Route::post('berries', 'BerryController@add');
+Route::delete('berries/{id}', 'BerryController@delete');
