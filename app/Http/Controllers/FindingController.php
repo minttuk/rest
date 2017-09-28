@@ -21,11 +21,17 @@ class FindingController extends Controller
     }
 
     public function add(Request $request){
+      try{
         $finding = new Finding;
         $finding->berry_id = Berry::where('name', $request->name)->firstOrFail()['id'];
         $finding->lat = $request->lat;
         $finding->long = $request->long;
         $finding->save();
+        return 200;
+      }
+      catch(\Exception $e){
+        return $e->getMessage();
+      }
     }
 
     public function delete(Request $request, $id){

@@ -35,7 +35,7 @@ function locate() {
     placeMarker(uluru, map);
     map.setCenter(uluru);
     //enables gps location button again
-    locatebutton.innerHTML = "GPS-paikannus";
+    locatebutton.html("GPS-paikannus");
     locatebutton.prop('disabled', false);
     submitbutton.prop('disabled', false);
   },
