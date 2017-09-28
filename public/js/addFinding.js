@@ -6,7 +6,19 @@ var lng;
 $( document ).ready(function() {
   locatebutton = $('#locate-button');
   submitbutton = $('#submit-button');
+  fillBerryOptions();
 });
+
+function fillBerryOptions() {
+  getBerries(function(berries) {
+    let selectform = $("#berryselect");
+    console.log(berries);
+    for (var i = 0; i < berries.length; i++) {
+      console.log(berries[i].name);
+      selectform.append('<option>' + berries[i].name + '</option>')
+    }
+  });
+}
 
 function locate() {
   locatebutton.prop('disabled', true);
