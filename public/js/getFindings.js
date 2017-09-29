@@ -8,7 +8,7 @@ function find() {
     console.log("valinta on " + berry);
     var bounds = new google.maps.LatLngBounds();
     var markers;
-    if (berry != '(valitse marja)' || berry != '') {
+    if (berry != "(valitse marja)" || berry != "") { //tämä != "(valitse marja)" ei jostain syystä toimi
         if (berry == 'kaikki'){
             getFindings(function(findings) {
                 placeMultipleMarker(findings);
@@ -16,7 +16,7 @@ function find() {
             });
         }
         else{
-            //tähän muut marjat
+            //tässä muut marjat id:n mukaan
             getBerry(berry, function(selectedBerry){
                 console.log("marja on " + JSON.stringify(selectedBerry));
                 console.log("marjan id on "+ selectedBerry.id );
@@ -33,24 +33,21 @@ function find() {
     else {
         console.log('error');
     }
+}
 
-    function getFindings(callback) {
-        //$.get("http://localhost:8888/rest/public/api/findings", function(data, status){ //Sainin localhost
-        //$.get("http://localhost/rest/public/api/findings", function(data, status){ //Mintun localhost
-            $.get(address + "/findings", function(data, status){
-                console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-            callback(data);
-        });
+function getFindings(callback) {
+    $.get(address + "/findings", function(data, status){
+        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        callback(data);
+    });
 
-    }
+}
 
 
-    function getFindingByBerryId(id, callback) {
-        $.get(address + "/findings/berry"+id, function(data, status){
-            console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-            callback(data);
-        });
-
-    }
+function getFindingByBerryId(id, callback) {
+    $.get(address + "/findings/berry/"+id, function(data, status){
+        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        callback(data);
+    });
 
 }
