@@ -16,6 +16,8 @@ function placeMarker(position, map) {
 
 function placeMultipleMarker(findings) {
     var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow();
+    var berry;
     for (var i = 0; i < findings.length; i++) {
         var position = new google.maps.LatLng(findings[i].lat, findings[i].long);
         bounds.extend(position);
@@ -23,9 +25,18 @@ function placeMultipleMarker(findings) {
             position: position,
             map: map
         });
+        getBerry(findings[i].berry_id, function(selectedBerry){
+            berry = selectedBerry;
+            });
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(berry.name);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
     }
 
-    //another marker for testing functionality
+    //another marker for bounds testing functionality
     var position2 = {lat: 60.1699, lng: 24.9384};
     bounds.extend(position2);
     marker = new google.maps.Marker({
@@ -37,6 +48,7 @@ function placeMultipleMarker(findings) {
     map.fitBounds(bounds);
 
 }
+
 
 function initMap() {
   var uluru = {lat: 60.1699, lng: 24.9384};
