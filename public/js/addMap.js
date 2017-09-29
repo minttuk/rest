@@ -14,11 +14,27 @@ function placeMarker(position, map) {
   map.setCenter(position);
 }
 
-function placeMultipleMarker(position, map) {
+function placeMultipleMarker(findings) {
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < findings.length; i++) {
+        var position = new google.maps.LatLng(findings[i].lat, findings[i].long);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map
+        });
+    }
+
+    //another marker for testing functionality
+    var position2 = {lat: 60.1699, lng: 24.9384};
+    bounds.extend(position2);
     marker = new google.maps.Marker({
-      position: position,
-      map: map
-  });
+        position: position2,
+        map: map
+    });
+
+    // Automatically center the map fitting all markers on the screen
+    map.fitBounds(bounds);
 
 }
 
