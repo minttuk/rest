@@ -25,13 +25,12 @@ function placeMultipleMarker(findings) {
             position: position,
             map: map
         });
-        getBerry(findings[i].berry_id, function(selectedBerry){
-            berry = selectedBerry;
-            });
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent(berry.name);
-                infowindow.open(map, marker);
+                getBerry(findings[i].berry_id, function(selectedBerry){
+                    infowindow.setContent(selectedBerry.name);
+                    infowindow.open(map, marker);
+                });
             }
         })(marker, i));
     }
