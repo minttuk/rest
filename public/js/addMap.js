@@ -36,14 +36,6 @@ function placeMultipleMarker(findings) {
         })(marker, i));
     }
 
-    //another marker for bounds testing functionality
-    var position2 = {lat: 60.1699, lng: 24.9384};
-    bounds.extend(position2);
-    marker = new google.maps.Marker({
-        position: position2,
-        map: map
-    });
-
     // Automatically center the map fitting all markers on the screen
     map.fitBounds(bounds);
 

@@ -3,7 +3,7 @@ function addFinding(berry, lat, lng) {
     if ($.isNumeric(lat) && $.isNumeric(lng)) {
       $.ajax({
           type: "POST",
-          url: "http://localhost:8888/rest/public/api/findings",
+          url: address +"/findings",
           dataType: "json",
           contentType: "application/json; charset=utf-8",
           data: JSON.stringify({name: parseInput(berry), lat: lat, long: lng}),

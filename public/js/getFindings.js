@@ -4,6 +4,7 @@
 
 
 function find() {
+    $("#errormessage").html("");
     var berry = $('#berryselect').val();
     if (berry != "(valitse marja)") {
         if (berry == 'kaikki'){
@@ -18,10 +19,8 @@ function find() {
                 getFindingByBerryId(selectedBerry.id, function(findings) {
                     placeMultipleMarker(findings);
                 });
-
             });
         }
-
     }
     else {
         console.log('Et ole valinnut marjaa!');
@@ -36,7 +35,6 @@ function getFindings(callback) {
     });
 
 }
-
 
 function getFindingByBerryId(id, callback) {
     $.get(address + "/findings/berry/"+id, function(data, status){
