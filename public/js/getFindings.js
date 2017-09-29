@@ -17,6 +17,16 @@ function find() {
         }
         else{
             //tähän muut marjat
+            getBerry(berry, function(selectedBerry){
+                console.log("marja on " + JSON.stringify(selectedBerry));
+                console.log("marjan id on "+ selectedBerry.id );
+
+                getFindingByBerryId(selectedBerry.id, function(findings) {
+                    placeMultipleMarker(findings);
+                    console.log(findings);
+                });
+
+            });
         }
 
     }
@@ -29,6 +39,15 @@ function find() {
         //$.get("http://localhost/rest/public/api/findings", function(data, status){ //Mintun localhost
             $.get(address + "/findings", function(data, status){
                 console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+            callback(data);
+        });
+
+    }
+
+
+    function getFindingByBerryId(id, callback) {
+        $.get(address + "/findings/berry"+id, function(data, status){
+            console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
             callback(data);
         });
 

@@ -17,7 +17,8 @@ class FindingController extends Controller
     }
 
     public function getBerry($berry){
-        return Finding::find($berry);
+        //return Finding::find($berry);
+        return Finding::where('berry_id', $berry)->get(); //tämä ei toimi
     }
 
     public function add(Request $request){

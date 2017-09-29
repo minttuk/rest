@@ -8,6 +8,16 @@ function getBerries(callback) {
 
 }
 
-function getBerry(id) {
+/*function getBerry(id) {
   return null;
+}*/
+
+function getBerry(id, callback) {
+    $.get(address + "/berries/"+id, function(data, status){
+        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        callback(data);
+    });
+
 }
+
+
