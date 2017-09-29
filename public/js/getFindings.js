@@ -5,10 +5,7 @@
 
 function find() {
     var berry = $('#berryselect').val();
-    console.log("valinta on " + berry);
-    var bounds = new google.maps.LatLngBounds();
-    var markers;
-    if (berry != "(valitse marja)" || berry != "") { //tämä != "(valitse marja)" ei jostain syystä toimi
+    if (berry != "(valitse marja)") {
         if (berry == 'kaikki'){
             getFindings(function(findings) {
                 placeMultipleMarker(findings);
@@ -18,12 +15,8 @@ function find() {
         else{
             //tässä muut marjat id:n mukaan
             getBerry(berry, function(selectedBerry){
-                console.log("marja on " + JSON.stringify(selectedBerry));
-                console.log("marjan id on "+ selectedBerry.id );
-
                 getFindingByBerryId(selectedBerry.id, function(findings) {
                     placeMultipleMarker(findings);
-                    console.log(findings);
                 });
 
             });
@@ -31,7 +24,8 @@ function find() {
 
     }
     else {
-        console.log('error');
+        console.log('Et ole valinnut marjaa!');
+        $("#errormessage").html("Valitse ensin marja!");
     }
 }
 

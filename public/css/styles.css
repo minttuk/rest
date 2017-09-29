@@ -11,3 +11,8 @@
 #submitresponsealert {
   display: none;
 }
+
+#errormessage {
+    font-weight: bold;
+    color: red;
+}
