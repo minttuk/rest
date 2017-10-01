@@ -21,27 +21,33 @@ function placeMarker(position, map) {
 //if users position is marked on map, it is not cleared.
 function placeMultipleMarker(findings) {
     clearMap();
-    var bounds = new google.maps.LatLngBounds();
-    var berry;
-    for (var i = 0; i < findings.length; i++) {
-        var lat = findings[i].lat;
-        var lng = findings[i].long;
-        var position = {lat: lat, lng: lng};
-        bounds.extend(position);
-        addMarker(position, map2, i);
-        //Adds infowindow content to markers
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                getBerry(findings[i].berry_id, function(selectedBerry){
-                    infowindow.setContent(selectedBerry.name);
-                    infowindow.open(map2, marker);
-                });
-            }
-        })(marker, i));
+    if (!$.trim(findings)){
+        $("#errormessage").html("Valitettavasti haluamasi marjan marjapaikkoja ei löytynyt!");
+        map2.setCenter({lat: 60.1699, lng: 24.9384});
+    }
+    else{
+        var bounds = new google.maps.LatLngBounds();
+        var berry;
+        for (var i = 0; i < findings.length; i++) {
+            var lat = findings[i].lat;
+            var lng = findings[i].long;
+            var position = {lat: lat, lng: lng};
+            bounds.extend(position);
+            addMarker(position, map2, i);
+            //Adds infowindow content to markers
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    getBerry(findings[i].berry_id, function(selectedBerry){
+                        infowindow.setContent(selectedBerry.name);
+                        infowindow.open(map2, marker);
+                    });
+                }
+            })(marker, i));
         }
 
-    // Automatically center the map fitting all markers on the screen
-    map2.fitBounds(bounds);
+        // Automatically center the map fitting all markers on the screen
+        map2.fitBounds(bounds);
+    }
 }
 
 //Adds a marker on the map and to the markers array
