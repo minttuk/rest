@@ -43,3 +43,25 @@ function getFindingByBerryId(id, callback) {
     });
 
 }
+
+function locate2() {
+    var locatebutton = $('#locate2-button');
+    locatebutton.prop('disabled', true);
+    locatebutton.html("Paikantaa...");
+
+    geoFindMe(function(position) {
+            var map = getMap2();
+            lat = position.coords.latitude;
+            lng = position.coords.longitude
+            var uluru = {lat: lat, lng: lng};
+            addOwnLocationMarker(uluru, map);
+            map.setCenter(uluru);
+            //enables gps location button again
+            locatebutton.html("Paikanna oma sijainti");
+            locatebutton.prop('disabled', false);
+        },
+        function() {
+            //error
+            console.log("Unable to retrieve your location");
+        });
+}
