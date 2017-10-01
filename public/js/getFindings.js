@@ -2,7 +2,7 @@
  * Created by minttu on 28-Sep-17.
  */
 
-
+//gets the findigs that are selected and calls function placeMultipleMarker() on the findings
 function find() {
     $("#errormessage").html("");
     var berry = $('#berryselect').val();
@@ -10,7 +10,7 @@ function find() {
         if (berry == 'kaikki'){
             getFindings(function(findings) {
                 placeMultipleMarker(findings);
-                console.log(findings);
+                //console.log(findings);
             });
         }
         else{
@@ -28,6 +28,7 @@ function find() {
     }
 }
 
+//gets all of the findings from database
 function getFindings(callback) {
     $.get(address + "/findings", function(data, status){
         console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
@@ -36,6 +37,7 @@ function getFindings(callback) {
 
 }
 
+//gets findings by berry_id from database
 function getFindingByBerryId(id, callback) {
     $.get(address + "/findings/berry/"+id, function(data, status){
         console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
