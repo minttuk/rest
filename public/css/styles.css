@@ -1,3 +1,11 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+nav {
+  font-family: 'Comfortaa', cursive;
+}
+
  #map, #map2 {
   height: 400px;
   width: 100%;
@@ -17,12 +25,24 @@
     color: red;
 }
 
+#locate-button {
+  min-width: 150px;
+}
+
+.btn {
+  font-family: 'Raleway', sans-serif;
+}
+
+.form-control {
+  font-family: 'Raleway', sans-serif;
+}
+
+#logo {
+  max-width: 50px;
+}
+
 @media (min-width: 768px) {
     #berryselect{
         width: auto;
     }
-}
-
-#locate-button {
-  min-width: 150px;
 }
