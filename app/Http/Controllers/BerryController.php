@@ -22,6 +22,9 @@ class BerryController extends Controller
     }
 
     public function add(Request $request){
+        $request->validate([
+         'name' => 'required|unique:berries|max:100',
+        ]);
         $berry = new Berry;
         $berry->name = $request->name;
         $berry->save();

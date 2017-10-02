@@ -8,6 +8,7 @@ use App\Berry;
 
 class FindingController extends Controller
 {
+
     public function getAll(){
         return Finding::all();
     }
@@ -21,13 +22,20 @@ class FindingController extends Controller
     }
 
     public function add(Request $request){
+      $request->validate([
+       'name' => 'required|exists:berries,name',
+       'lat' => 'required|numeric',
+       'long' => 'required|numeric',
+      ]);
       try{
         $finding = new Finding;
         $finding->berry_id = Berry::where('name', $request->name)->firstOrFail()['id'];
         $finding->lat = $request->lat;
         $finding->long = $request->long;
         $finding->save();
-        return 200;
+        $arr = array('message' => 'Finding created succesfully!'); //etc
+        return json_encode($arr);
+        //return 200;
       }
       catch(\Exception $e){
         return $e->getMessage();
