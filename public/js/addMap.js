@@ -62,10 +62,17 @@ function addMarker(position, map, i) {
 
 //Adds a marker on the map with info "Oma sijainti". This marker is not added to the markers array.
 function addOwnLocationMarker(position, map){
+  var icon = {
+        url: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-man-128.png", // url
+        scaledSize: new google.maps.Size(50, 50), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(25, 50) // anchor
+      };
+
     var positionMarker = new google.maps.Marker({
         position: position,
         map: map,
-        icon: image
+        icon: icon
     });
     addInfoWindowContent(positionMarker, "i", "Oma sijainti");
     map.setCenter(position);
