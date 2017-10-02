@@ -3,20 +3,7 @@ var map, map2; //map2 in showFindings.html
 var infowindow;
 var content;
 var markersArray = [];
-//var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-/*function placeMarker(position, map) {
-    if (positionMarker == null) {
-        positionMarker = new google.maps.Marker({
-            position: position,
-            map: map
-        });
-    }
-    else {
-        positionMarker.setPosition(position);
-    }
-    map.setCenter(position);
-}*/
 
 //Adds a marker on the map. If the map is map2, info "Oma sijainti" is added. This marker is not added to the markers array.
 function placeMarker(position, map) {
@@ -73,6 +60,10 @@ function placeMultipleMarker(findings) {
 
         // Automatically center the map fitting all markers on the screen
         map2.fitBounds(bounds);
+        var zoom = map2.getZoom();
+        if (zoom > 13){
+            map2.setZoom(13);
+        }
     }
 }
 
@@ -84,25 +75,6 @@ function addMarker(position, map, i) {
     });
     markersArray.push(marker);
 }
-
-//Adds a marker on the map with info "Oma sijainti". This marker is not added to the markers array.
-/*function addOwnLocationMarker(position, map){
-  var icon = {
-        url: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-man-128.png", // url
-        scaledSize: new google.maps.Size(50, 50), // scaled size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(25, 50) // anchor
-      };
-
-    var positionMarker = new google.maps.Marker({
-        position: position,
-        map: map,
-        icon: icon
-    });
-    placeMarker(position, map);
-    addInfoWindowContent(positionMarker, "i", "Oma sijainti");
-    map.setCenter(position);
-}*/
 
 //Adds infowindow content to a marker.
 function addInfoWindowContent(marker, i, content){
@@ -158,30 +130,3 @@ function getMap2(){
 function getMarker() {
   return marker;
 }
-
-
-
-
-/*function placeMultipleMarker(findings) {
- var bounds = new google.maps.LatLngBounds();
- //var infowindow = new google.maps.InfoWindow();
- var berry;
- for (var i = 0; i < findings.length; i++) {
- var position = new google.maps.LatLng(findings[i].lat, findings[i].long);
- bounds.extend(position);
- marker = new google.maps.Marker({
- position: position,
- map: map2
- });
- google.maps.event.addListener(marker, 'click', (function(marker, i) {
- return function() {
- getBerry(findings[i].berry_id, function(selectedBerry){
- infowindow.setContent(selectedBerry.name);
- infowindow.open(map2, marker);
- });
- }
- })(marker, i));
- }
- // Automatically center the map fitting all markers on the screen
- map2.fitBounds(bounds);
- }*/
