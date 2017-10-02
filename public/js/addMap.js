@@ -1,21 +1,46 @@
-var marker;
+var marker, positionMarker;
 var map, map2; //map2 in showFindings.html
 var infowindow;
 var content;
 var markersArray = [];
-var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+//var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
+/*function placeMarker(position, map) {
+    if (positionMarker == null) {
+        positionMarker = new google.maps.Marker({
+            position: position,
+            map: map
+        });
+    }
+    else {
+        positionMarker.setPosition(position);
+    }
+    map.setCenter(position);
+}*/
+
+//Adds a marker on the map. If the map is map2, info "Oma sijainti" is added. This marker is not added to the markers array.
 function placeMarker(position, map) {
-  if (marker == null) {
-    marker = new google.maps.Marker({
-      position: position,
-      map: map
-    });
-  }
-  else {
-    marker.setPosition(position);
-  }
-  map.setCenter(position);
+    if (positionMarker == null) {
+        var icon = {
+            url: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-man-128.png", // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+            origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(25, 50) // anchor
+        };
+
+        positionMarker = new google.maps.Marker({
+            position: position,
+            map: map,
+            icon: icon
+        });
+        if (map == map2){
+            addInfoWindowContent(positionMarker, "i", "Oma sijainti");
+        }
+    }
+    else {
+        positionMarker.setPosition(position);
+    }
+    map.setCenter(position);
 }
 
 //clears map from berries and adds selected findings markers to map with infowindow content.
@@ -61,7 +86,7 @@ function addMarker(position, map, i) {
 }
 
 //Adds a marker on the map with info "Oma sijainti". This marker is not added to the markers array.
-function addOwnLocationMarker(position, map){
+/*function addOwnLocationMarker(position, map){
   var icon = {
         url: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-man-128.png", // url
         scaledSize: new google.maps.Size(50, 50), // scaled size
@@ -74,9 +99,10 @@ function addOwnLocationMarker(position, map){
         map: map,
         icon: icon
     });
+    placeMarker(position, map);
     addInfoWindowContent(positionMarker, "i", "Oma sijainti");
     map.setCenter(position);
-}
+}*/
 
 //Adds infowindow content to a marker.
 function addInfoWindowContent(marker, i, content){

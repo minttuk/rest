@@ -56,7 +56,8 @@ function locate2() {
             lat = position.coords.latitude;
             lng = position.coords.longitude
             var uluru = {lat: lat, lng: lng};
-            addOwnLocationMarker(uluru, map);
+            placeMarker(uluru, map);
+            //addOwnLocationMarker(uluru, map);
             map.setCenter(uluru);
             //enables gps location button again
             locatebutton.html("Paikanna oma sijainti");
