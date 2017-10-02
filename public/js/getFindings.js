@@ -46,7 +46,6 @@ function getFindingByBerryId(id, callback) {
 
 }
 
-
 function locate2() {
     var locatebutton = $('#locate2-button');
     locatebutton.prop('disabled', true);
