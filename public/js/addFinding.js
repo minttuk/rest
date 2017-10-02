@@ -52,9 +52,9 @@ function locate() {
 
 function submitAdd() {
   var berry = $('#berryselect').val();
-  if (berry != '(valitse marja)' && berry != '' && marker != null) {
-    var lat = marker.getPosition().toJSON().lat;
-    var lng = marker.getPosition().toJSON().lng;
+  if (berry != '(valitse marja)' && berry != '' && positionMarker != null) {
+    var lat = positionMarker.getPosition().toJSON().lat;
+    var lng = positionMarker.getPosition().toJSON().lng;
     addFinding(berry, lat, lng);
   }
   else {
