@@ -9,6 +9,10 @@ $( document ).ready(function() {
   fillBerryOptions();
 });
 
+$("#berryselect").click(function() {
+  clearMessage();
+})
+
 function fillBerryOptions() {
   getBerries(function(berries) {
     let selectform = $("#berryselect");
@@ -21,6 +25,7 @@ function fillBerryOptions() {
 }
 
 function locate() {
+  clearMessage()
   locatebutton.prop('disabled', true);
   submitbutton.prop('disabled', true);
   locatebutton.html("Paikantaa...");
@@ -45,7 +50,7 @@ function locate() {
   });
 }
 
-function submit() {
+function submitAdd() {
   var berry = $('#berryselect').val();
   if (berry != '(valitse marja)' && berry != '' && marker != null) {
     var lat = marker.getPosition().toJSON().lat;
@@ -53,7 +58,7 @@ function submit() {
     addFinding(berry, lat, lng);
   }
   else {
-    $("#submitresponse").html("Varmista, että olet valinnut marjan ja asettanut sijainnin.");
+    showErrormessage("Varmista, että olet valinnut marjan ja asettanut sijainnin.");
   }
 }
 

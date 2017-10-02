@@ -48,21 +48,21 @@
               </select>
             </div>
             <p>Paikanna sijaintisi tai valitse sijainti kartalta.</p>
-            <button id="locate-button" type="button" class="btn btn-secondary" onclick="locate()">GPS-paikannus</button>
+            <div class="row">
+              <div class="col-sm-3">
+                <button id="locate-button" type="button" class="btn btn-success" onclick="locate()">GPS-paikannus</button>
+                <button id="submit-button" type="button" class="btn btn-primary" onclick="submitAdd()">Lisää</button>
+              </div>
+              <div class="col-sm-9">
+                  <p id="submitresponse"></p>
+              </div>
+            </div>
             <div class="row">
               <div class="col">
                 <div id="map"></div>
               </div>
             </div>
           </form>
-          <div class="row">
-            <div class="col-sm-1">
-              <button id="submit-button" type="button" class="btn btn-primary" onclick="submit()">Lisää</button>
-            </div>
-            <div class="col-sm-11">
-                <p id="submitresponse"></p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

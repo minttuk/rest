@@ -8,15 +8,29 @@ function addFinding(berry, lat, lng) {
           contentType: "application/json; charset=utf-8",
           data: JSON.stringify({name: parseInput(berry), lat: lat, long: lng}),
           success: function () {
-            submitresponse.html("Marjalöytö lisätty. Kiitos!");
+            showSuccessmessage("Marjalöytö lisätty. Kiitos!");
           },
           error: function (response) {
             console.log(response.responseText);
-            submitresponse.html("Jotakin meni pieneen. Yritä myöhemmin uudelleen. :(");
+            showErrormessage("Jotakin meni pieneen. Yritä myöhemmin uudelleen. :(");
           }
       })
     }
     else {
-      submitresponse.html("Varmista, että syötteesi ovat oikein");
+      showErrormessage("Varmista, että syötteesi ovat oikein");
     }
+}
+
+function showErrormessage(message) {
+  $("#submitresponse").css("color", "red");
+  $("#submitresponse").html(message);
+}
+
+function showSuccessmessage(message) {
+  $("#submitresponse").css("color", "green");
+  $("#submitresponse").html(message);
+}
+
+function clearMessage() {
+  $("#submitresponse").html('');
 }
