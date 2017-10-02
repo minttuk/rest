@@ -168,6 +168,8 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+        //Despark\Apidoc\ApiDocServiceProvider::class,
         /*
          * Application Service Providers...
          */
