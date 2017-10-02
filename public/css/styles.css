@@ -16,6 +16,9 @@
     font-weight: bold;
     color: red;
 }
-#berryselect{
-    width: auto;
+
+@media (min-width: 768px) {
+    #berryselect{
+        width: auto;
+    }
 }
