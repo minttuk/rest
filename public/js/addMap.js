@@ -3,6 +3,7 @@ var map, map2; //map2 in showFindings.html
 var infowindow;
 var content;
 var markersArray = [];
+var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
 function placeMarker(position, map) {
   if (marker == null) {
@@ -61,11 +62,12 @@ function addMarker(position, map, i) {
 
 //Adds a marker on the map with info "Oma sijainti". This marker is not added to the markers array.
 function addOwnLocationMarker(position, map){
-    marker = new google.maps.Marker({
+    var positionMarker = new google.maps.Marker({
         position: position,
-        map: map
+        map: map,
+        icon: image
     });
-    addInfoWindowContent(marker, "i", "Oma sijainti");
+    addInfoWindowContent(positionMarker, "i", "Oma sijainti");
     map.setCenter(position);
 }
 
