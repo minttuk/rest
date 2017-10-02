@@ -1,5 +1,8 @@
 var marker;
-var map;
+var map, map2; //map2 in showFindings.html
+var infowindow;
+var content;
+var markersArray = [];
 
 function placeMarker(position, map) {
   if (marker == null) {
@@ -14,49 +17,136 @@ function placeMarker(position, map) {
   map.setCenter(position);
 }
 
+//clears map from berries and adds selected findings markers to map with infowindow content.
+//if users position is marked on map, it is not cleared.
 function placeMultipleMarker(findings) {
-    var bounds = new google.maps.LatLngBounds();
-    var infowindow = new google.maps.InfoWindow();
-    var berry;
-    for (var i = 0; i < findings.length; i++) {
-        var position = new google.maps.LatLng(findings[i].lat, findings[i].long);
-        bounds.extend(position);
-        marker = new google.maps.Marker({
-            position: position,
-            map: map
-        });
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                getBerry(findings[i].berry_id, function(selectedBerry){
-                    infowindow.setContent(selectedBerry.name);
-                    infowindow.open(map, marker);
-                });
-            }
-        })(marker, i));
+    clearMap();
+    if (!$.trim(findings)){
+        $("#errormessage").html("Valitettavasti haluamasi marjan marjapaikkoja ei löytynyt!");
+        map2.setCenter({lat: 60.1699, lng: 24.9384});
     }
+    else{
+        var bounds = new google.maps.LatLngBounds();
+        var berry;
+        for (var i = 0; i < findings.length; i++) {
+            var lat = findings[i].lat;
+            var lng = findings[i].long;
+            var position = {lat: lat, lng: lng};
+            bounds.extend(position);
+            addMarker(position, map2, i);
+            //Adds infowindow content to markers
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    getBerry(findings[i].berry_id, function(selectedBerry){
+                        infowindow.setContent(selectedBerry.name);
+                        infowindow.open(map2, marker);
+                    });
+                }
+            })(marker, i));
+        }
 
-    // Automatically center the map fitting all markers on the screen
-    map.fitBounds(bounds);
-
+        // Automatically center the map fitting all markers on the screen
+        map2.fitBounds(bounds);
+    }
 }
 
+//Adds a marker on the map and to the markers array
+function addMarker(position, map, i) {
+    marker = new google.maps.Marker({
+        position: position,
+        map: map
+    });
+    markersArray.push(marker);
+}
 
+//Adds a marker on the map with info "Oma sijainti". This marker is not added to the markers array.
+function addOwnLocationMarker(position, map){
+    marker = new google.maps.Marker({
+        position: position,
+        map: map
+    });
+    addInfoWindowContent(marker, "i", "Oma sijainti");
+    map.setCenter(position);
+}
+
+//Adds infowindow content to a marker.
+function addInfoWindowContent(marker, i, content){
+    // Allow each marker to have an info window
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+            infowindow.setContent(content);
+            infowindow.open(map2, marker);
+        }
+    })(marker, i));
+}
+
+//clears the markers in the markers array from the map.
+function clearMap() {
+    if (markersArray) {
+        for (i in markersArray) {
+            markersArray[i].setMap(null);
+        }
+        markersArray.length = 0;
+    }
+}
+
+//initializes map to be used in page addFindings.html
 function initMap() {
-  var uluru = {lat: 60.1699, lng: 24.9384};
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: uluru
-  });
+    var uluru = {lat: 60.1699, lng: 24.9384};
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: uluru
+    });
+    map.addListener('click', function(e) {
+        placeMarker(e.latLng, map);
+    });
+}
 
-  map.addListener('click', function(e) {
-    placeMarker(e.latLng, map);
-  });
+//Initializes map2 to be used in the showFindings.html page.
+function initMap2() {
+    infowindow = new google.maps.InfoWindow();
+    var uluru = {lat: 60.1699, lng: 24.9384};
+    map2 = new google.maps.Map(document.getElementById('map2'), {
+        zoom: 15,
+        center: uluru
+    });
 }
 
 function getMap() {
   return map;
 }
 
+function getMap2(){
+    return map2;
+}
+
 function getMarker() {
   return marker;
 }
+
+
+
+
+/*function placeMultipleMarker(findings) {
+ var bounds = new google.maps.LatLngBounds();
+ //var infowindow = new google.maps.InfoWindow();
+ var berry;
+ for (var i = 0; i < findings.length; i++) {
+ var position = new google.maps.LatLng(findings[i].lat, findings[i].long);
+ bounds.extend(position);
+ marker = new google.maps.Marker({
+ position: position,
+ map: map2
+ });
+ google.maps.event.addListener(marker, 'click', (function(marker, i) {
+ return function() {
+ getBerry(findings[i].berry_id, function(selectedBerry){
+ infowindow.setContent(selectedBerry.name);
+ infowindow.open(map2, marker);
+ });
+ }
+ })(marker, i));
+ }
+ // Automatically center the map fitting all markers on the screen
+ map2.fitBounds(bounds);
+ }*/
