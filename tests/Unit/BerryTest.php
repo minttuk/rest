@@ -23,10 +23,14 @@ class BerryTest extends TestCase
     }
 
     public function testGetId(){
-        $response = $this->call('GET', 'BerryController@getId', ['id' => "Puolukka"]);
-        $this->assertEquals(1, $response->id);
+        //$response = $this->call('GET', 'BerryController@getId', ['id' => "Puolukka"]);
+        $response = $this->call('GET', 'api/berries/Puolukka');
+        //$this->assertEquals(1, $response->id);
+        //$this->assertEquals(1, json_encode($response));
+        $response = json_encode($response);
         //$this->assertEquals(1, $this->action('GET', 'BerryController@getId', ['name' => "Puolukka"]));
         //$this->assertEquals(1, getId("Puolukka"));
+        $this->assertContains('"id":1', $response);
 
     }
 }
