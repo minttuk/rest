@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-include '../../app/Http/Controllers/BerryController.php'; //tätä ei löydä???
+//include '../../app/Http/Controllers/BerryController.php'; //tätä ei löydä???
 
 class BerryTest extends TestCase
 {
@@ -20,6 +20,8 @@ class BerryTest extends TestCase
     }
 
     public function testGetId(){
-        $this->assertEquals(1, getId("Puolukka"));
+        $response = $this->action('Get', 'BerryController@getId', ['name' => "Puolukka"]);
+        $this->assertEquals(1, $response);
+        //$this->assertEquals(1, getId("Puolukka"));
     }
 }
