@@ -1,0 +1,34 @@
+Marjalöytö Kuvaus Toiminnallisuudesta
+
+Alustavaa runkoa....
+
+Kuvaus:
+    Marjalöytö on sovellus, joka koostuu kahdesta HTML-sivusta. Toiseen käyttäjät voivat lisätä marjapaikkoja ja toisesta
+    käyttäjät voivat hakea marjapaikkoja. Marjapaikan lisäys tapahtuu valitsemalla marjan laji (esim. Puolukka,
+    Mustikka...) ja antamalla marjapaikan sijainti joko kartasta valitsemalla, tai paikannuksen avulla. Marjapaikkojen
+    haku suoritetaan valitsemalla jokin marja, tai kaikki marjat. Marjapaikat näytetään karttapohjalla, johon on
+    mahdollista paikantaa myös käyttäjän oma sijainti.
+
+Marjalöytö projekti on toteutettu Laravel kehyksellä.
+
+Projektiin kuuluu:
+    Kaksi avointa rajapintaa:
+        1. Google maps api - kartta-api
+        2. Geolocation api - paikannus-api
+
+    Oma avoin rajapinta, joka palauttaa tiedon JSON-formaatissa. Rajapinnan kautta tietoa voi hakea sekä lisätä.
+
+    Tietokanta, johon tallentuu Marjalöytö paikkojen tiedot. Tietokanta koostuu kahdesta taulukosta:
+        Findings (id, berry_id, lat, long, created_at, updated_at)
+        Berries (id, name)
+
+    Käyttöliittymä (Html, CSS, Javascript, JQuery)
+
+Validointi:
+    Tiedon lisäykset tietokantaan on validoitu
+
+Yksikkötestit:
+    Phpunit yksikkötestejä on x kpl.
+
+Muuta?
+
