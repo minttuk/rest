@@ -24,8 +24,8 @@ class FindingController extends Controller
     public function add(Request $request){
       $request->validate([
        'name' => 'required|exists:berries,name',
-       'lat' => 'required|numeric',
-       'long' => 'required|numeric',
+       'lat' => 'required|numeric|max:85|min:-85',
+       'long' => 'required|numeric|max:180|min:-180',
       ]);
       try{
         $finding = new Finding;
