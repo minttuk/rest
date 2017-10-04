@@ -3,6 +3,7 @@ Tehtävää:
 *api documentaatio (api.html) ---
 blade?
 *validointi -Saini
+get kutsujen palaute
 yksikkötestit? -Minttu(Berry) Saini(Finding)
 messageiden merge -Minttu
 auktorisointi?

@@ -24,7 +24,7 @@ function find() {
     }
     else {
         console.log('Et ole valinnut marjaa!');
-        $("#submitresponse").html("Valitse ensin marja!");
+        showErrormessage("Valitse ensin marja!");
     }
 }
 
