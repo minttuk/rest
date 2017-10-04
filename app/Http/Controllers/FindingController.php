@@ -13,12 +13,12 @@ class FindingController extends Controller
         return Finding::all();
     }
 
-    public function getId($id){
+    public function getFinding($id){
         return Finding::find($id);
     }
 
-    public function getBerry($id){
-        return Finding::where('berry_id', $id)->get();
+    public function getFindings($berry_id){
+        return Finding::where('berry_id', $berry_id)->get();
     }
 
     public function add(Request $request){

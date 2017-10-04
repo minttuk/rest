@@ -23,8 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('findings', 'FindingController@getAll');
-Route::get('findings/{id}', 'FindingController@getId');
-Route::get('findings/berry/{id}', 'FindingController@getBerry');
+Route::get('findings/{id}', 'FindingController@getFinding');
+Route::get('findings/berry/{id}', 'FindingController@getFindings');
 Route::post('findings', 'FindingController@add');
 //Route::delete('findings/{id}', 'FindingController@delete');
 
