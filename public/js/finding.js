@@ -5,6 +5,7 @@ function addFinding(berry, lat, lng) {
           type: "POST",
           url: address +"/findings",
           dataType: "json",
+          accept: "application/json",
           contentType: "application/json; charset=utf-8",
           data: JSON.stringify({name: parseInput(berry), lat: lat, long: lng}),
           success: function () {
