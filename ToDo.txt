@@ -1,9 +1,8 @@
 Tehtävää:
 
 *api documentaatio (api.html) ---
-*symboolit/markerit -Saini
-*zoom level ja oman sijainnin päivitys -Minttu
 blade?
 *validointi -Saini
-yksikkötestit? -Minttu
+yksikkötestit? -Minttu(Berry) Saini(Finding)
+messageiden merge -Minttu
 auktorisointi?
