@@ -1,6 +1,6 @@
 Marjalöytö Kuvaus Toiminnallisuudesta
 
-Alustavaa runkoa....
+Alustavaa runkoa.....
 
 Kuvaus:
     Marjalöytö on sovellus, joka koostuu kahdesta HTML-sivusta. Toiseen käyttäjät voivat lisätä marjapaikkoja ja toisesta
