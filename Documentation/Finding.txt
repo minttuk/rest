@@ -1,1 +1,115 @@
 Saini
+
+Route::get('findings', 'FindingController@getAll');
+Route::get('findings/{id}', 'FindingController@getFinding');
+Route::get('findings/berry/{id}', 'FindingController@getFindings');
+Route::post('findings', 'FindingController@add');
+
+Get all findings
+
+  URL:                    /findings
+  Method:                 GET
+  URL Params:             None
+  Success Response:       Code: 200
+                          Content: { JSON Array of findings }
+  Error Response:         ??
+  Sample Call:            $.get(address + "/findings", function(data){
+                            alert(data);
+                          });
+  Sample response:        [
+                            {
+                                "id": 1,
+                                "berry_id": 1,
+                                "lat": 60.2499990000000025247572921216487884521484375,
+                                "long": 24.599997599999998243447407730855047702789306640625,
+                                "created_at": null,
+                                "updated_at": null
+                            },
+                            {
+                                "id": 2,
+                                "berry_id": 3,
+                                "lat": 12.3244249999999997413624441833235323429107666015625,
+                                "long": 13.4444400000000001682565198279917240142822265625,
+                                "created_at": "2017-09-28 16:17:44",
+                                "updated_at": "2017-09-28 16:17:44"
+                            }
+                          ]
+
+Get one finding by id
+
+  URL:                    /findings/{id}
+  Method:                 GET
+  URL Params:             id=[integer]
+  Success Response:       Code: 200
+                          Content: { JSON finding data }
+  Error Response:         ??
+  Sample Call:            $.get(address + "/findings/1", function(data){
+                            alert(data);
+                          });
+  Sample Response:        {
+                              "id": 1,
+                              "berry_id": 1,
+                              "lat": 60.2499990000000025247572921216487884521484375,
+                              "long": 24.599997599999998243447407730855047702789306640625,
+                              "created_at": null,
+                              "updated_at": null
+                          }
+
+Get all findings by berry
+
+  URL:                    /findings/berry/{berry id}
+  Method:                 GET
+  URL Params:             berry id=[integer]
+  Success Response:       Code: 200
+                          Content: { JSON array of findings}
+  Error Response:         ??
+  Sample Call:            $.get(address + "/findings/berry/1", function(data){
+                            alert(data);
+                          });
+  Sample Response:        [
+                            {
+                                "id": 1,
+                                "berry_id": 1,
+                                "lat": 60.2499990000000025247572921216487884521484375,
+                                "long": 24.599997599999998243447407730855047702789306640625,
+                                "created_at": null,
+                                "updated_at": null
+                            },
+                            {
+                                "id": 4,
+                                "berry_id": 1,
+                                "lat": 60.168073074683633194581489078700542449951171875,
+                                "long": 24.93806362152099609375,
+                                "created_at": "2017-09-28 17:16:33",
+                                "updated_at": "2017-09-28 17:16:33"
+                            }
+                          ]
+
+Add a new finding
+
+  URL:                    /findings
+  Method:                 POST
+  URL Params:             None
+  Data Params:            name=[string],
+                          lat=[double between -85 and 85],
+                          long=[double between -180 and 180]
+  Success Response:       Code: 200
+                          Content: {"message": "Finding created successfully!"}
+  Error Response:         Code: 422
+                          Content:
+                          {
+                            "message": "The given data was invalid.",
+                            "errors": {
+                              {data}: [
+                                "The {data} field is required."
+                              ]
+                            }
+                          }
+  Sample call:            $.ajax({
+                            type: "POST",
+                            url: address +"/findings",
+                            dataType: "json",
+                            accept: "application/json",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify({name: "Mansikka", lat: 50, long: 50})
+                          };
