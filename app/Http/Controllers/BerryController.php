@@ -33,7 +33,7 @@ class BerryController extends Controller
     }
 
     public function delete(Request $request, $id){
-        $berry = Finding::findOrFail($id);
+        $berry = Berry::findOrFail($id);
         $berry->delete();
         return 204;
     }
