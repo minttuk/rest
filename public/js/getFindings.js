@@ -34,7 +34,18 @@ function getFindings(callback) {
         console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
         callback(data);
     });
-
+    /*
+    $.ajax({
+        type: "GET",
+        url: address +"/findings",
+        success: function (data) {
+          callback(data);
+        },
+        error: function (response) {
+          console.log(response.responseText);
+          showErrormessage("Jotakin meni pieneen. Yritä myöhemmin uudelleen. :(");
+        }
+    })*/
 }
 
 //gets findings by berry_id from database
