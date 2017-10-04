@@ -28,7 +28,8 @@ class BerryController extends Controller
         $berry = new Berry;
         $berry->name = $request->name;
         $berry->save();
-        //return Finding::create($request->all());
+        $arr = array('message' => 'Berry created succesfully!'); //etc
+        return json_encode($arr);
     }
 
     public function delete(Request $request, $id){
