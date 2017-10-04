@@ -12,12 +12,12 @@ class BerryController extends Controller
         return Berry::all();
     }
 
-    public function getId($id){
-      if (is_int($id) || ctype_digit($id)) {
-        return Berry::find($id);
+    public function getBerry($berry){
+      if (is_int($berry) || ctype_digit($berry)) {
+        return Berry::find($berry);
       }
-      else if (is_string($id)) {
-        return Berry::where('name', $id)->firstOrFail();
+      else if (is_string($berry)) {
+        return Berry::where('name', $berry)->firstOrFail();
       }
     }
 

@@ -22,7 +22,7 @@ class BerryTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testGetId(){
+    public function testGetBerry(){
         $response = $this->call('GET', 'api/berries/Puolukka');
         $this->assertEquals(1, $response->original->id);
     }

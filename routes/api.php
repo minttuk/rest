@@ -29,6 +29,6 @@ Route::post('findings', 'FindingController@add');
 //Route::delete('findings/{id}', 'FindingController@delete');
 
 Route::get('berries', 'BerryController@getAll');
-Route::get('berries/{id}', 'BerryController@getId');
+Route::get('berries/{berry}', 'BerryController@getBerry');
 Route::post('berries', 'BerryController@add');
 //Route::delete('berries/{id}', 'BerryController@delete');

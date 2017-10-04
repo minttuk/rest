@@ -10,8 +10,8 @@ function getBerries(callback) {
   return null;
 }*/
 
-function getBerry(id, callback) {
-    $.get(address + "/berries/"+id, function(data, status){
+function getBerry(berry, callback) {
+    $.get(address + "/berries/"+berry, function(data, status){
         console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
         callback(data);
     });
