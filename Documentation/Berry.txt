@@ -12,7 +12,7 @@ Get all berries
   Success Response:       Code: 200
                           Content: { JSON Array of findings }
   Error Response:         ??
-  Sample Call:            $.get(address +"/berries", function(data){
+  Sample Call:            $.get("http://localhost/rest/public/api/berries/", function(data){
                             alert(data);
                           });
   Sample response:        [
@@ -42,7 +42,7 @@ Get one berry by id
     Success Response:       Code: 200
                             Content: { JSON finding data }
     Error Response:         ??
-    Sample Call:            $.get(address + "/berries/1", function(data){
+    Sample Call:            $.get("http://localhost/rest/public/api/berries/1", function(data){
                               alert(data);
                             });
     Sample Response:        {
@@ -58,7 +58,7 @@ Get one berry by berry name
   Success Response:       Code: 200
                           Content: { JSON finding data }
   Error Response:         ??
-  Sample Call:            $.get(address + "/berries/Puolukka", function(data){
+  Sample Call:            $.get("http://localhost/rest/public/api/berries/Puolukka", function(data){
                             alert(data);
                           });
   Sample Response:        {
@@ -86,7 +86,7 @@ Add a new berry
                           }
   Sample call:            $.ajax({
                             type: "POST",
-                            url: address +"/berries",
+                            url: "http://localhost/rest/public/api/berries/",
                             dataType: "json",
                             data: JSON.stringify({name: "Mansikka"})
                           };
