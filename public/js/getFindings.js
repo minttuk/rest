@@ -4,7 +4,7 @@
 
 //gets the findigs that are selected and calls function placeMultipleMarker() on the findings
 function find() {
-    $("#errormessage").html("");
+    $("#submitresponse").html("");
     var berry = $('#berryselect').val();
     if (berry != "(valitse marja)") {
         if (berry == 'kaikki'){
@@ -24,7 +24,7 @@ function find() {
     }
     else {
         console.log('Et ole valinnut marjaa!');
-        $("#errormessage").html("Valitse ensin marja!");
+        $("#submitresponse").html("Valitse ensin marja!");
     }
 }
 

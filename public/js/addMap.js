@@ -35,7 +35,7 @@ function placeMarker(position, map) {
 function placeMultipleMarker(findings) {
     clearMap();
     if (!$.trim(findings)){
-        $("#errormessage").html("Valitettavasti haluamasi marjan marjapaikkoja ei löytynyt!");
+        $("#submitresponse").html("Valitettavasti haluamasi marjan marjapaikkoja ei löytynyt!");
         map2.setCenter({lat: 60.1699, lng: 24.9384});
     }
     else{
