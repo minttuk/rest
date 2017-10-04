@@ -17,10 +17,20 @@ class FindingTest extends TestCase
         $this->assertTrue(true);
     }
 
-/*
-    public function testGetId(){
-        $response = $this->call('GET', 'api/berries/Puolukka');
+
+    public function testGetAll(){
+        $response = $this->call('GET', 'api/findings');
+        $this->assertEquals(1, $response->original[0]->id);
+    }
+
+    public function testGetFinding(){
+        $response = $this->call('GET', 'api/findings/1');
         $this->assertEquals(1, $response->original->id);
-    }*/
+    }
+
+    public function testFindings(){
+        $response = $this->call('GET', 'api/findings/berry/1');
+        $this->assertEquals(1, $response->original[0]->berry_id);
+    }
 
 }
