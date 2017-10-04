@@ -25,11 +25,17 @@ class BerryController extends Controller
         $request->validate([
          'name' => 'required|unique:berries|max:100',
         ]);
-        $berry = new Berry;
-        $berry->name = $request->name;
-        $berry->save();
-        $arr = array('message' => 'Berry created succesfully!'); //etc
-        return json_encode($arr);
+        try{
+            $berry = new Berry;
+            $berry->name = $request->name;
+            $berry->save();
+            $arr = array('message' => 'Berry created succesfully!'); //etc
+            return json_encode($arr);
+        }
+        catch(\Exception $e){
+            return $e->getMessage();
+        }
+
     }
 
     public function delete(Request $request, $id){

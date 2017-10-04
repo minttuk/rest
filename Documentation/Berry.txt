@@ -1,1 +1,92 @@
 minttu
+
+Route::get('berries', 'BerryController@getAll');
+Route::get('berries/{berry}', 'BerryController@getBerry');
+Route::post('berries', 'BerryController@add');
+
+Get all berries
+
+  URL:                    /berries
+  Method:                 GET
+  URL Params:             None
+  Success Response:       Code: 200
+                          Content: { JSON Array of findings }
+  Error Response:         ??
+  Sample Call:            $.get(address +"/berries", function(data){
+                            alert(data);
+                          });
+  Sample response:        [
+                              {
+                                  "id": 1,
+                                  "name": "Puolukka"
+                              },
+                              {
+                                  "id": 2,
+                                  "name": "Mustikka"
+                              },
+                              {
+                                  "id": 3,
+                                  "name": "Mansikka"
+                              },
+                              {
+                                  "id": 4,
+                                  "name": "Lakka"
+                              }
+                          ]
+
+Get one berry by id
+
+    URL:                    /berries/{berry}
+    Method:                 GET
+    URL Params:             berry=[integer]
+    Success Response:       Code: 200
+                            Content: { JSON finding data }
+    Error Response:         ??
+    Sample Call:            $.get(address + "/berries/1", function(data){
+                              alert(data);
+                            });
+    Sample Response:        {
+                                "id": 1,
+                                "name": "Puolukka"
+                            }
+
+Get one berry by berry name
+
+  URL:                    /berries/{berry}
+  Method:                 GET
+  URL Params:             berry=[string]
+  Success Response:       Code: 200
+                          Content: { JSON finding data }
+  Error Response:         ??
+  Sample Call:            $.get(address + "/berries/Puolukka", function(data){
+                            alert(data);
+                          });
+  Sample Response:        {
+                              "id": 1,
+                              "name": "Puolukka"
+                          }
+
+Add a new berry
+
+  URL:                    /berries
+  Method:                 POST
+  URL Params:             None
+  Data Params:            name=[string]
+  Success Response:       Code: 200
+                          Content: {"message":"Berry created succesfully!"}
+  Error Response:         Code: 422
+                          Content:
+                          {
+                            "message": "The given data was invalid.",
+                            "errors": {
+                              {data}: [
+                                "The {data} field is required."
+                              ]
+                            }
+                          }
+  Sample call:            $.ajax({
+                            type: "POST",
+                            url: address +"/berries",
+                            dataType: "json",
+                            data: JSON.stringify({name: "Mansikka"})
+                          };
