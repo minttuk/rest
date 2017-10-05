@@ -77,12 +77,22 @@ Add a new berry
   Error Response:         Code: 422
                           Content:
                           {
-                            "message": "The given data was invalid.",
-                            "errors": {
-                              {data}: [
-                                "The {data} field is required."
-                              ]
-                            }
+                              "message": "The given data was invalid.",
+                              "errors": {
+                                  "name": [
+                                      "The name field is required."
+                                  ]
+                              }
+                          }
+                          Code: 422
+                          Content:
+                          {
+                              "message": "The given data was invalid.",
+                              "errors": {
+                                  "name": [
+                                      "The name has already been taken."
+                                  ]
+                              }
                           }
   Sample call:            $.ajax({
                             type: "POST",
