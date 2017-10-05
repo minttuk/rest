@@ -16,7 +16,10 @@ Projektiin kuuluu:
         1. Google maps api - kartta-api
         2. Geolocation api - paikannus-api
 
-    Oma avoin rajapinta, joka palauttaa tiedon JSON-formaatissa. Rajapinnan kautta tietoa voi hakea sekä lisätä.
+    Oma avoin rajapinta, joka palauttaa tiedon JSON-formaatissa ja http-koodein. Rajapinnan kautta tietoa voi hakea sekä lisätä tietoa.
+
+    Tietokanta:
+      MySQL, Laravel Migration, Laravel Eloquent
 
     Tietokanta, johon tallentuu Marjalöytö paikkojen tiedot. Tietokanta koostuu kahdesta taulukosta:
         Findings (id, berry_id, lat, long, created_at, updated_at)
@@ -31,4 +34,3 @@ Yksikkötestit:
     Phpunit yksikkötestejä on x kpl.
 
 Muuta?
-
