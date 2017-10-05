@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Berry;
 
-
 class BerryController extends Controller
 {
     public function getAll(){
@@ -14,10 +13,22 @@ class BerryController extends Controller
 
     public function getBerry($berry){
       if (is_int($berry) || ctype_digit($berry)) {
-        return Berry::find($berry);
+        try{
+          $berry = Berry::find($berry);
+          return $berry;
+        }
+        catch(\Exception $e){
+            return $e->getMessage();
+        }
       }
       else if (is_string($berry)) {
-        return Berry::where('name', $berry)->firstOrFail();
+        try {
+          $berry = Berry::where('name', $berry)->firstOrFail();
+          return $berry;
+        }
+        catch(\Exception $e){
+            return response()->json(['Message' => $e->getMessage()], 402);
+        }
       }
     }
 
