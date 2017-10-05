@@ -12,7 +12,11 @@ Get all findings
   URL Params:             None
   Success Response:       Code: 200
                           Content: { JSON Array of findings }
-  Error Response:         ??
+  Error Response:         Code: 200
+                          Content:
+                          {
+                            "Message": "No findings were found"
+                          }
   Sample Call:            $.get(address + "/findings", function(data){
                             alert(data);
                           });
@@ -42,7 +46,11 @@ Get one finding by id
   URL Params:             id=[integer]
   Success Response:       Code: 200
                           Content: { JSON finding data }
-  Error Response:         ??
+  Error Response:         Code: 402
+                          Content:
+                          {
+                              "Message": "No query results for model [App\\Finding] {id}"
+                          }
   Sample Call:            $.get(address + "/findings/1", function(data){
                             alert(data);
                           });
@@ -62,7 +70,16 @@ Get all findings by berry
   URL Params:             berry id=[integer]
   Success Response:       Code: 200
                           Content: { JSON array of findings}
-  Error Response:         ??
+  Error Response:         Code: 200
+                          Content:
+                          {
+                              "Message": "No findings for berry."
+                          }
+                          Code: 402
+                          Content:
+                          {
+                              "Message": "Berry id does not exist."
+                          }
   Sample Call:            $.get(address + "/findings/berry/1", function(data){
                             alert(data);
                           });

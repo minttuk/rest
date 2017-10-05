@@ -10,15 +10,35 @@ class FindingController extends Controller
 {
 
     public function getAll(){
-        return Finding::all();
+      $findings = Finding::all();
+      if (sizeof($findings) == 0) {
+        return response()->json(['Message' => "No findings were found"], 200);
+      }
+      return $findings;
     }
 
     public function getFinding($id){
-        return Finding::find($id);
+      try {
+        $finding = Finding::findOrFail($id);
+        return $finding;
+      }
+      catch(\Exception $e){
+          return response()->json(['Message' => $e->getMessage()], 402);
+      }
     }
 
     public function getFindings($berry_id){
-        return Finding::where('berry_id', $berry_id)->get();
+        $findings = Finding::where('berry_id', $berry_id)->get();
+        if (sizeof($findings) == 0) {
+          try {
+            $berry = Berry::findOrFail($berry_id);
+            return response()->json(['Message' => "No findings for berry."], 200);
+          }
+          catch (\Exception $e) {
+            return response()->json(['Message' => "Berry id does not exist."], 402);
+          }
+        }
+        return $findings;
     }
 
     public function add(Request $request){
@@ -33,19 +53,24 @@ class FindingController extends Controller
         $finding->lat = $request->lat;
         $finding->long = $request->long;
         $finding->save();
-        $arr = array('message' => 'Finding created succesfully!'); //etc
+        $arr = array('Message' => 'Finding created succesfully!');
         return json_encode($arr);
-        //return 200;
       }
       catch(\Exception $e){
-        return $e->getMessage();
+        return response()->json(['Message' => $e->getMessage()]);
       }
     }
 
+    // Method disabled in api
     public function delete(Request $request, $id){
+      try {
         $finding = Finding::findOrFail($id);
         $finding->delete();
-        return 204;
+        return response()->json(['Message' => "Data deleted succesfully"], 204);
+      }
+      catch(\Exception $e){
+        return response()->json(['Message' => $e->getMessage()]);
+      }
     }
 
 }

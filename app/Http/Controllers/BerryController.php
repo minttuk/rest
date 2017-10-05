@@ -8,17 +8,21 @@ use App\Berry;
 class BerryController extends Controller
 {
     public function getAll(){
-        return Berry::all();
+        $berries = Berry::all();
+        if (sizeof($berries) == 0) {
+          return response()->json(['Message' => "No berries were found"], 200);
+        }
+        return $berries;
     }
 
     public function getBerry($berry){
       if (is_int($berry) || ctype_digit($berry)) {
-        try{
-          $berry = Berry::find($berry);
+        try {
+          $berry = Berry::findOrFail($berry);
           return $berry;
         }
         catch(\Exception $e){
-            return $e->getMessage();
+            return response()->json(['Message' => $e->getMessage()], 402);
         }
       }
       else if (is_string($berry)) {
@@ -44,14 +48,20 @@ class BerryController extends Controller
             return json_encode($arr);
         }
         catch(\Exception $e){
-            return $e->getMessage();
+            return response()->json(['Message' => $e->getMessage()]);
         }
 
     }
 
+    //Method disabled in api
     public function delete(Request $request, $id){
+      try {
         $berry = Berry::findOrFail($id);
         $berry->delete();
-        return 204;
+        return response()->json(['Message' => "Data deleted succesfully"], 204);
+      }
+      catch(\Exception $e){
+        return response()->json(['Message' => $e->getMessage()]);
+      }
     }
 }

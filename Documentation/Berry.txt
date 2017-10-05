@@ -11,7 +11,11 @@ Get all berries
   URL Params:             None
   Success Response:       Code: 200
                           Content: { JSON Array of findings }
-  Error Response:         ??
+  Error Response:         Code: 200
+                          Content:
+                          {
+                            "Message" => "No berries were found"
+                          }
   Sample Call:            $.get("http://localhost/rest/public/api/berries/", function(data){
                             alert(data);
                           });
@@ -41,7 +45,11 @@ Get one berry by id
     URL Params:             berry=[integer]
     Success Response:       Code: 200
                             Content: { JSON finding data }
-    Error Response:         ??
+    Error Response:         Code: 402
+                            Content:
+                            {
+                               "Message": "No query results for model [App\\Berry] {id}"
+                            }
     Sample Call:            $.get("http://localhost/rest/public/api/berries/1", function(data){
                               alert(data);
                             });
@@ -57,7 +65,11 @@ Get one berry by berry name
   URL Params:             berry=[string]
   Success Response:       Code: 200
                           Content: { JSON finding data }
-  Error Response:         ??
+  Error Response:         Code: 402
+                          Content:
+                          {
+                              "Message": "No query results for model [App\\Berry]."
+                          }
   Sample Call:            $.get("http://localhost/rest/public/api/berries/Puolukka", function(data){
                             alert(data);
                           });
