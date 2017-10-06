@@ -28,6 +28,7 @@ function placeMarker(position, map) {
         positionMarker.setPosition(position);
     }
     map.setCenter(position);
+    map.setZoom(15);
 }
 
 //clears map from berries and adds selected findings markers to map with infowindow content.
