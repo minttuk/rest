@@ -35,7 +35,7 @@ function placeMarker(position, map) {
 //if users position is marked on map, it is not cleared.
 function placeMultipleMarker(findings) {
     clearMap();
-    if (!$.trim(findings)){
+    if (findings.Message){
         showErrormessage("Valitettavasti haluamasi marjan marjapaikkoja ei löytynyt!");
         map2.setCenter({lat: 60.1699, lng: 24.9384});
     }
