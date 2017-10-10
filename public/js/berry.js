@@ -1,6 +1,6 @@
 function getBerries(callback) {
     $.get(address +"/berries", function(data, status){
-      console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+      //console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
       callback(data);
   });
 
@@ -12,7 +12,7 @@ function getBerries(callback) {
 
 function getBerry(berry, callback) {
     $.get(address + "/berries/"+berry, function(data, status){
-        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        //console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
         callback(data);
     });
 

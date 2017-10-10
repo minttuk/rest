@@ -16,9 +16,9 @@ $("#berryselect").click(function() {
 function fillBerryOptions() {
   getBerries(function(berries) {
     let selectform = $("#berryselect");
-    console.log(berries);
+    //console.log(berries);
     for (var i = 0; i < berries.length; i++) {
-      console.log(berries[i].name);
+      //console.log(berries[i].name);
       selectform.append('<option>' + berries[i].name + '</option>')
     }
   });

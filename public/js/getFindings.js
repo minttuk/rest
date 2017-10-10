@@ -31,7 +31,7 @@ function find() {
 //gets all of the findings from database
 function getFindings(callback) {
     $.get(address + "/findings", function(data, status){
-        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        //console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
         callback(data);
     });
     /*
@@ -51,7 +51,7 @@ function getFindings(callback) {
 //gets findings by berry_id from database
 function getFindingByBerryId(id, callback) {
     $.get(address + "/findings/berry/"+id, function(data, status){
-        console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        //console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
         callback(data);
     });
 
