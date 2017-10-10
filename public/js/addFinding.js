@@ -3,16 +3,19 @@ var submitbutton = $('#submit-button');
 var lat;
 var lng;
 
+// Shows berries in the list when document is ready
 $( document ).ready(function() {
   locatebutton = $('#locate-button');
   submitbutton = $('#submit-button');
   fillBerryOptions();
 });
 
+// Clears the old error message when user is active as in chooses a new berry
 $("#berryselect").click(function() {
   clearMessage();
 })
 
+// Gets and shows berry options
 function fillBerryOptions() {
   getBerries(function(berries) {
     let selectform = $("#berryselect");
@@ -24,8 +27,10 @@ function fillBerryOptions() {
   });
 }
 
+// Locates user and shows on map
 function locate() {
   clearMessage()
+  // Disables buttons while location is taking place and changes location button text into "Paikantaa..."
   locatebutton.prop('disabled', true);
   submitbutton.prop('disabled', true);
   locatebutton.html("Paikantaa...");
@@ -39,7 +44,7 @@ function locate() {
     var uluru = {lat: lat, lng: lng};
     placeMarker(uluru, map);
     map.setCenter(uluru);
-    //enables gps location button again
+    //enables gps location button again after locating is ready
     locatebutton.html("GPS-paikannus");
     locatebutton.prop('disabled', false);
     submitbutton.prop('disabled', false);
@@ -50,6 +55,7 @@ function locate() {
   });
 }
 
+// Submits a new berry finding
 function submitAdd() {
   var berry = $('#berryselect').val();
   if (berry != '(valitse marja)' && berry != '' && positionMarker != null) {
@@ -62,6 +68,7 @@ function submitAdd() {
   }
 }
 
+// Parses input
 function parseInput(input) {
     return $($.parseHTML(input)).text();
 }

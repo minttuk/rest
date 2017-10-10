@@ -1,3 +1,4 @@
+// Adds a new finding with post
 function addFinding(berry, lat, lng) {
     let submitresponse = $("#submitresponse");
     if ($.isNumeric(lat) && $.isNumeric(lng)) {
@@ -22,16 +23,19 @@ function addFinding(berry, lat, lng) {
     }
 }
 
+// Shows a red error message if something went wrong
 function showErrormessage(message) {
   $("#submitresponse").css("color", "red");
   $("#submitresponse").html(message);
 }
 
+// Shows a green error message if post was successful
 function showSuccessmessage(message) {
   $("#submitresponse").css("color", "green");
   $("#submitresponse").html(message);
 }
 
+// Clears old message
 function clearMessage() {
   $("#submitresponse").html('');
 }
