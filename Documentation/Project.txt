@@ -8,17 +8,17 @@ Kuvaus:
     mahdollista paikantaa myös käyttäjän oma sijainti.
 
     BACKEND:
-    /app/Controllers:
-      - BerryController.php
-      - FindingController.php
-    /app
-      - Berry.php
-      - Finding.php
-    /routes:
-      - api.php
-    /tests/Unit:
-      - BerryTest.php
-      - FindingTest.php 
+      /app/Controllers:
+        - BerryController.php
+        - FindingController.php
+      /app
+        - Berry.php
+        - Finding.php
+      /routes:
+        - api.php
+      /tests/Unit:
+        - BerryTest.php
+        - FindingTest.php 
 
     FRONTEND:
       /public:
