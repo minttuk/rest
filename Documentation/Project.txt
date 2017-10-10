@@ -7,6 +7,33 @@ Kuvaus:
     haku suoritetaan valitsemalla jokin marja, tai kaikki marjat. Marjapaikat näytetään karttapohjalla, johon on
     mahdollista paikantaa myös käyttäjän oma sijainti.
 
+    BACKEND:
+    /app/Controllers:
+      - BerryController.php
+      - FindingController.php
+    /app
+      - Berry.php
+      - Finding.php
+    /routes:
+      - api.php
+    /tests/Unit:
+      - BerryTest.php
+      - FindingTest.php 
+
+    FRONTEND:
+      /public:
+        - addFinding.html
+        - showFindings.html
+      /public/css:
+        - styles.css
+      /public/js:
+        - addFinding.js
+        - addMap.js
+        - berry.js
+        - finding.js
+        - geolocation.js
+        - getFindings.js
+
 Marjalöytö projekti on toteutettu Laravel kehyksellä.
 
 Projektiin kuuluu:
