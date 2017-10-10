@@ -17,6 +17,7 @@ Projektiin kuuluu:
         2. Geolocation api - paikannus-api
 
     Oma avoin rajapinta, joka palauttaa tiedon JSON-formaatissa ja http-koodein. Rajapinnan kautta tietoa voi hakea sekä lisätä tietoa.
+    Rajapinnan dokumentaatio löytyy projektista Documentation-kansiosta tiedostoista Berry.txt ja Finding.txt.
 
     Tietokanta:
       MySQL, Laravel Migration, Laravel Eloquent
@@ -31,6 +32,4 @@ Validointi:
     Tiedon lisäykset tietokantaan on validoitu
 
 Yksikkötestit:
-    Phpunit yksikkötestejä on x kpl.
-
-Muuta?
+    Phpunit yksikkötestejä on 6 kpl.

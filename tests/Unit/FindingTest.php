@@ -7,17 +7,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FindingTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
-
-
     public function testGetAll(){
         $response = $this->call('GET', 'api/findings');
         $this->assertEquals(1, $response->original[0]->id);

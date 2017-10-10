@@ -24,6 +24,5 @@ class BerryTest extends TestCase
     public function testGetAllBerries(){
         $response = $this->call('GET', 'api/berries');
         $this->assertEquals("Puolukka", $response->original[0]->name);
-        //$this->assertEquals(4, count($response->original));
     }
 }
