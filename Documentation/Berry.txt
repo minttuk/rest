@@ -1,8 +1,4 @@
-minttu
-
-Route::get('berries', 'BerryController@getAll');
-Route::get('berries/{berry}', 'BerryController@getBerry');
-Route::post('berries', 'BerryController@add');
+Berry API Documentation
 
 Get all berries
 

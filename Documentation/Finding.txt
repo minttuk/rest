@@ -1,9 +1,4 @@
-Saini
-
-Route::get('findings', 'FindingController@getAll');
-Route::get('findings/{id}', 'FindingController@getFinding');
-Route::get('findings/berry/{id}', 'FindingController@getFindings');
-Route::post('findings', 'FindingController@add');
+Finding API Documentation
 
 Get all findings
 
@@ -17,7 +12,7 @@ Get all findings
                           {
                             "Message": "No findings were found"
                           }
-  Sample Call:            $.get(address + "/findings", function(data){
+  Sample Call:            $.get("http://localhost/rest/public/api/findings", function(data){
                             alert(data);
                           });
   Sample response:        [
@@ -51,7 +46,7 @@ Get one finding by id
                           {
                               "Message": "No query results for model [App\\Finding] {id}"
                           }
-  Sample Call:            $.get(address + "/findings/1", function(data){
+  Sample Call:            $.get("http://localhost/rest/public/api/findings/1", function(data){
                             alert(data);
                           });
   Sample Response:        {
@@ -80,7 +75,7 @@ Get all findings by berry
                           {
                               "Message": "Berry id does not exist."
                           }
-  Sample Call:            $.get(address + "/findings/berry/1", function(data){
+  Sample Call:            $.get("http://localhost/rest/public/api/findings/berry/1", function(data){
                             alert(data);
                           });
   Sample Response:        [
@@ -124,7 +119,7 @@ Add a new finding
                           }
   Sample call:            $.ajax({
                             type: "POST",
-                            url: address +"/findings",
+                            url: "http://localhost/rest/public/api/findings",
                             dataType: "json",
                             accept: "application/json",
                             contentType: "application/json; charset=utf-8",

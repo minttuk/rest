@@ -18,7 +18,7 @@ Kuvaus:
         - api.php
       /tests/Unit:
         - BerryTest.php
-        - FindingTest.php 
+        - FindingTest.php
 
     FRONTEND:
       /public:
@@ -54,7 +54,7 @@ Projektiin kuuluu:
     Käyttöliittymä (Html, CSS, Javascript, JQuery)
 
 Validointi:
-    Tiedon lisäykset tietokantaan on validoitu
+    Tiedon lisäykset tietokantaan on validoitu Laravelin validoinnilla. Käyttöliittymän syötteitä validoidaan myös frontendissä.
 
 Yksikkötestit:
     Phpunit yksikkötestejä on 6 kpl.
