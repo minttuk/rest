@@ -7,6 +7,12 @@ Kuvaus:
     haku suoritetaan valitsemalla jokin marja, tai kaikki marjat. Marjapaikat näytetään karttapohjalla, johon on
     mahdollista paikantaa myös käyttäjän oma sijainti.
 
+    DOKUMENTOINTI:
+      /Documentation
+        - Berry.txt
+        - Finding.txt
+        - Project.txt
+
     BACKEND:
       /app/Controllers:
         - BerryController.php
