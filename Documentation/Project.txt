@@ -51,7 +51,7 @@ Projektiin kuuluu:
         Findings (id, berry_id, lat, long, created_at, updated_at)
         Berries (id, name)
 
-    Käyttöliittymä (Html, CSS, Javascript, JQuery)
+    Käyttöliittymä (Html, CSS, Javascript, JQuery). Käyttöliittymä on toteutettu niin, että se toimii myös hyvin mobiilinäkymässä.
 
 Validointi:
     Tiedon lisäykset tietokantaan on validoitu Laravelin validoinnilla. Käyttöliittymän syötteitä validoidaan myös frontendissä.

@@ -78,6 +78,7 @@ Add a new berry
 
   URL:                    /berries
   Method:                 POST
+  Header:                 Accept: application/json
   URL Params:             None
   Data Params:            name=[string]
   Success Response:       Code: 200
